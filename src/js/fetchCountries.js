@@ -61,5 +61,3 @@ function manageErrors(response) {
      }
     return response;
 }
-
-//countries.name == input.value
