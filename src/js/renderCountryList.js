@@ -1,3 +1,5 @@
+let tenderCountryList;
+
 export default renderCountryList = countries => {
   const countryList = document.querySelector(".country-list");
 
