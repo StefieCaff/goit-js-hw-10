@@ -1,4 +1,4 @@
-let renderCountryInfo;
+let renderCountryInfo = '';
 export default renderCountryInfo = countries => {
     const countryInfo = document.querySelector(".country-info");
 
