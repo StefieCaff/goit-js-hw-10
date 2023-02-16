@@ -8,22 +8,27 @@ const countryInfo = document.querySelector(".country-info");
 
 // Handle API call 
 export default function fetchCountries(name) {
-// REST Countries API    
-  const url = `https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`  
-    fetch(url)
-        .then(response => {
-            if (name === '') {
-              countryInfo.innerHTML = "";
-              countryList.innerHTML = "";
-              throw Error(response.statusText); 
-            }
-          if (!response.ok) {
-              countryInfo.innerHTML = "";
-              countryList.innerHTML = "";
-              manageErrors(response);
-            }
-            return response.json();
-        })  
+  // REST Countries API    
+  const url = `https://restcountries.com/v3.1/name/${name}?fields=name,capital,population,flags,languages`
+  fetch(url)
+    .then(response => {
+      if (name === '') {
+        countryInfo.innerHTML = "";
+        countryList.innerHTML = "";
+        // throw Error(response.statusText);
+      }
+      if (!response.ok) {
+        if (response.status == 404) {
+          countryInfo.innerHTML = "";
+          countryList.innerHTML = "";
+          Notify.failure('Oops, there is no country with that name')
+          throw Error(response.statusText);
+        }
+        return response;
+      }
+
+      return response.json();
+    })
            
         .then(countries => {
           const totalCountries = countries.length
@@ -53,14 +58,14 @@ export default function fetchCountries(name) {
 
 
 
-//manage errors on FETCH
-function manageErrors(response) { 
-    if (!response.ok) { 
-        if (response.status == 404) {
-              Notify.failure('Oops, there is no country with that name')   
-              throw Error(response.statusText); 
-            }
-        return;
-     }
-    return response;
-};
+// //manage errors on FETCH
+// function manageErrors(response) { 
+//     if (!response.ok) { 
+//         if (response.status == 404) {
+//               Notify.failure('Oops, there is no country with that name')   
+//               throw Error(response.statusText); 
+//             }
+//         return;
+//      }
+//     return response;
+// };

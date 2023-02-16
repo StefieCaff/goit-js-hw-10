@@ -15,7 +15,11 @@ const countryInfo = document.querySelector(".country-info");
 // function to manage typing changes and call fetch function to api
 const handleInputChange = e => {
   let input = e.target.value.trim();
+  if (input == "") {
+    return;
+  }
   const response = fetchCountries(input);
+  
   };
 
 // event listener with lodash denounce for more limited API calls
