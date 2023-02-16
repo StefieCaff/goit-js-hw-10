@@ -1,7 +1,7 @@
 let renderCountryInfo = '';
 export default renderCountryInfo = countries => {
     const countryInfo = document.querySelector(".country-info");
-
+ 
     const markup = countries
         .map(country => {
         
@@ -23,7 +23,7 @@ export default renderCountryInfo = countries => {
                    </li>
                    <li class="country-info__item"><b>Population:</b> ${population}
                    </li>
-                   <li class="country-info__item"><b>Language(s):</b> ${languages} 
+                   <li class="country-info__item"><b>Language(s):</b> ${Object.values(languages)} 
                    </li>
                  </ol>
                  </div>
