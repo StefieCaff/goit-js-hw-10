@@ -13,11 +13,14 @@ export default function fetchCountries(name) {
     fetch(url)
         .then(response => {
             if (name === '') {
-            countryInfo.innerHTML = "";
-            countryList.innerHTML = ""
+              countryInfo.innerHTML = "";
+              countryList.innerHTML = "";
+              throw Error(response.statusText); 
             }
-            if (!response.ok) {
-                manageErrors(response);
+          if (!response.ok) {
+              countryInfo.innerHTML = "";
+              countryList.innerHTML = "";
+              manageErrors(response);
             }
             return response.json();
         })  
@@ -60,4 +63,4 @@ function manageErrors(response) {
         return;
      }
     return response;
-}
+};
