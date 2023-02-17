@@ -13,8 +13,8 @@ export default renderCountryInfo = countries => {
                 flags: { svg }
             } = country;
           
-            return (countryInfo.innerHTML =
-              `<li class="country-info-item">
+          return (countryInfo.innerHTML =
+            `<li class="country-info-item">
                  <img class= "country-info__flag" src="${svg}" alt="Icon of ${official}'s flag." width="60px" height="60px">
                  <h2 class= "country-info__heading">${official}</h2>
                  <div class="country-info-list__wrapper"
@@ -23,7 +23,7 @@ export default renderCountryInfo = countries => {
                    </li>
                    <li class="country-info__item"><b>Population:</b> ${population}
                    </li>
-                   <li class="country-info__item"><b>Language(s):</b> ${Object.values(languages)} 
+                   <li class="country-info__item"><b>Language(s):</b> ${Object.values(languages).map(languages => " " + languages.name)}; 
                    </li>
                  </ol>
                  </div>
@@ -32,3 +32,8 @@ export default renderCountryInfo = countries => {
         .join("");
     countryInfo.innerHTML = markup;
 };  
+
+// <li><p>Languages: ${country.languages.map(languages => " " + languages.name)}</p></li>
+
+
+// ${Object.values(languages).map(languages => " " + languages.name)};
