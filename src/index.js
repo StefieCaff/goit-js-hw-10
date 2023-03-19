@@ -18,7 +18,7 @@ const handleInputChange = e => {
   if (input == "") {
     return;
   }
-  const response = fetchCountries(input);
+  return response = fetchCountries(input);
   
   };
 
